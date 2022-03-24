@@ -10,7 +10,7 @@ module.exports = function(){
     //chave estrangeira para questionario
     group: {
         type: mongoose.isObjectIdOrHexString,
-        ref: 'QuestionGroup'
+        ref: 'QuestionGroup',
         required: true
     }
 })
