@@ -1,6 +1,6 @@
-const mongoose = require ('mongoose')
+const mongoose = require('mongoose')
 
-module.exports = function(){
+module.exports = function() {
 
     const schema = mongoose.Schema({
         datetime: {
@@ -14,13 +14,14 @@ module.exports = function(){
         },
         description: {
             type: String,
-            required: false //atributo opcional
+            required: false     // atributo opcional
         },
-        user:{
-            tyoe: mongoose.ObjectoId,
+        user: {
+            type: mongoose.ObjectId,
             required: true,
-            ref:'User'
+            ref: 'User'
         }
     })
-    return mongoose.model('Assessment', schema, 'assessment')
+
+    return mongoose.model('Assessment', schema, 'assessments')
 }

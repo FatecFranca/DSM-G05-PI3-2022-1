@@ -1,7 +1,7 @@
-//Carrega as variaveis de ambiente do arquivo .env
+// Carrega as variáveis de ambiente do arquivo .env
 require('dotenv').config()
 
-// Exibindo as variaveis de ambiente no console (teste)
+// Exibindo as variáveis de ambiente no console (teste)
 //console.log(process.env)
 
 var express = require('express');
@@ -20,15 +20,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-/***************************ROTAS****************************** */
+/***************** ROTAS ********************* */
 
 const glossary = require('./routes/glossary')
 app.use('/glossary', glossary)
 
-
-
-
-
-/* *********************************************************** */
+/********************************************* */
 
 module.exports = app;

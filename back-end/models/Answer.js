@@ -1,44 +1,40 @@
-const mongoose = require ('mongoose')
+const mongoose = require('mongoose')
 
-module.exports = function(){
+module.exports = function() {
 
     const schema = mongoose.Schema({
-        
-        assessment:{
-            type: mongoose.ObjectoId,
+        assessment: {
+            type: mongoose.ObjectId,
             required: true,
-            ref:'Assessment'
+            ref: 'Assessment'
         },
-
-        question:{
-            type: mongoose.ObjectoId,
+        question: {
+            type: mongoose.ObjectId,
             required: true,
-            ref:'Question'
+            ref: 'Question'
         },
-
         /*
-        
-        Valores válidos para objective_ANSWER
+            Valores válidos para objective_answer
+            Y: Sim (Yes)
+            N: Não (No)
+            X: Não aplicável (Not Applicable)
+            P: Resposta adiada (Postponed)
         */
-
-        objective_answer:{
+        objective_answer: {
             type: String,
             enum: ['Y', 'N', 'X', 'P'],
             required: true
-            //ref:'Question'
         },
-        comments:{
+        comments : {
             type: String,
-            required: false,
-            //ref:'Question'
+            required: false     // opcional
         },
-
-        date_time: {
+        datetime: {
             type: Date,
             required: true,
-            default: Date.now() //valor padrão do campo
+            default: Date.now()
         }
-
     })
-    return mongoose.model('Answer', schema, 'answer')
+
+    return mongoose.model('Answer', schema, 'answers')
 }

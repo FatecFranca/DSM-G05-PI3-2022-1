@@ -11,12 +11,12 @@ module.exports = function() {
             type: String,
             required: true
         }
-        
     })
 
-    //Geração do model
-    //1 parametro nome do model inicial maiuscula
-    //2 parametro atributos do model(definidos na variavel schema
-    //3 parametro nome do collection no banco de dados
+    // Geração do model
+    // 1º parâmetro: nome do model (inicial maiúscula)
+    // 2º parâmetro: atributos do model (definidos na variável schema)
+    // 3º parâmetro: nome da collection no banco de dados
     return mongoose.model('Glossary', schema, 'glossaries')
+
 }
