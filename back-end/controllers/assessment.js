@@ -1,5 +1,5 @@
 // Importa o model correspondente
-const Glossary = require('../models/Glossary')()
+const Assessment = require('../models/Assessment')()
 
 const controller = {}   // Objeto vazio
 
@@ -7,7 +7,7 @@ const controller = {}   // Objeto vazio
 // entrada do glossário
 controller.create = async (req, res) => {
     try {
-        await Glossary.create(req.body)
+        await Assessment.create(req.body)
         // HTTP 201: Created
         res.status(201).end()
     }
@@ -22,7 +22,7 @@ controller.create = async (req, res) => {
 // glossário já inseridas
 controller.retrieve = async (req, res) => {
     try {
-        const result = await Glossary.find()
+        const result = await Assessment.find().populate('user')
         // HTTP 200: OK é implícito aqui
         res.send(result)
     }
@@ -38,7 +38,7 @@ controller.retrieve = async (req, res) => {
 controller.retrieveOne = async(req, res) => {
     try{
         const id = req.params.id
-        const result = await Glossary.findById(id)
+        const result = await Assessment.findById(id)
         // Se tivermos um resultado, retornamos com status Http 200
         if(result) res.send(result)
         // Se não retornamos HTTP 404: Not Found
@@ -56,7 +56,7 @@ controller.retrieveOne = async(req, res) => {
 controller.update = async(req, res) =>{
     try{
         const id = req.body.id
-        const result = await Glossary.findByIdAndUpdate(id, req.body)
+        const result = await Assessment.findByIdAndUpdate(id, req.body)
         //HTTP 204: No content
         if(result) res.status(204).end()
         else res.status(404).end()
@@ -74,7 +74,7 @@ controller.update = async(req, res) =>{
 controller.delete = async(req, res) =>{
     try{
         const id = req.body.id
-        const result = await Glossary.findByIdAndDelete(id)
+        const result = await Assessment.findByIdAndDelete(id)
         if(result) res.status(404).end()
         else res.status(404).end()
     }
