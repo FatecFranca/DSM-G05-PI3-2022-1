@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-module.exports = function() {
+module.exports = function () {
 
     const schema = mongoose.Schema({
         datetime: {

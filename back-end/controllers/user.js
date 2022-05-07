@@ -9,6 +9,11 @@ const controller = {}   // Objeto vazio
 // entrada do glossário
 controller.create = async (req, res) => {
     try {
+        //É NECESSÁRIO AGORA TER UM PASSWORD
+        //NO BODY
+        if(!req.body.password) res.status(500).send({error: ' Path "password" is required'})
+//Encripta o valor de "password" em "password_hash"
+
         await User.create(req.body)
         // HTTP 201: Created
         res.status(201).end()
@@ -116,10 +121,14 @@ controller.login = async (req, res){
     }
 }
         
-    catch(error){
+    catch (error) {
     console.error(error)
     //HTTP 500: Interna server error
     res.status(500).send(error)
+}
+
+controller.logout = async(req, res) = {
+    res.send({ auth: false, token: null })
 }
 
 module.exports = controller

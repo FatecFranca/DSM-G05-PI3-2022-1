@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-module.exports = function() {
+module.exports = function () {
 
     const schema = mongoose.Schema({
         assessment: {
@@ -25,7 +25,7 @@ module.exports = function() {
             enum: ['Y', 'N', 'X', 'P'],
             required: true
         },
-        comments : {
+        comments: {
             type: String,
             required: false     // opcional
         },
@@ -36,7 +36,7 @@ module.exports = function() {
         }
     })
 
-    schema.index({assessment: 1, question: 1}, {unique: true})
+    schema.index({ assessment: 1, question: 1 }, { unique: true })
 
     return mongoose.model('Answer', schema, 'answers')
 }

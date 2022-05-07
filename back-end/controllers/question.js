@@ -11,7 +11,7 @@ controller.create = async (req, res) => {
         // HTTP 201: Created
         res.status(201).end()
     }
-    catch(error) {
+    catch (error) {
         console.error(error)
         // HTTP 500: Internal Server Error
         res.status(500).send(error)
@@ -26,43 +26,43 @@ controller.retrieve = async (req, res) => {
         // HTTP 200: OK é implícito aqui
         res.send(result)
     }
-    catch(error) {
+    catch (error) {
         console.error(error)
         // HTTP 500: Internal Server Error
-        res.status(500).send(error)        
+        res.status(500).send(error)
     }
 }
 
 //Função que retorna uma única entrada do glossário
 //Com base no Id fornecido
-controller.retrieveOne = async(req, res) => {
-    try{
+controller.retrieveOne = async (req, res) => {
+    try {
         const id = req.params.id
         const result = await Question.findById(id)
         // Se tivermos um resultado, retornamos com status Http 200
-        if(result) res.send(result)
+        if (result) res.send(result)
         // Se não retornamos HTTP 404: Not Found
         else res.status(404).end()
     }
 
 
-    catch(error){
+    catch (error) {
         console.error(error)
         //HTTP 500: Internal Server Error
         res.status(500).send(error)
     }
 }
 
-controller.update = async(req, res) =>{
-    try{
+controller.update = async (req, res) => {
+    try {
         const id = req.body.id
         const result = await Question.findByIdAndUpdate(id, req.body)
         //HTTP 204: No content
-        if(result) res.status(204).end()
+        if (result) res.status(204).end()
         else res.status(404).end()
     }
 
-    catch(error){
+    catch (error) {
         console.error(error)
         //HTTP 500: Internal Server Error
         res.status(500).send(error)
@@ -71,18 +71,18 @@ controller.update = async(req, res) =>{
 }
 
 
-controller.delete = async(req, res) =>{
-    try{
+controller.delete = async (req, res) => {
+    try {
         const id = req.body.id
         const result = await Question.findByIdAndDelete(id)
-        if(result) res.status(404).end()
+        if (result) res.status(404).end()
         else res.status(404).end()
     }
 
 
-    
 
-    catch(error){
+
+    catch (error) {
         console.error(error)
         //HTTP 500: Internal Server Error
         res.status(500).send(error)
