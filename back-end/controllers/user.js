@@ -11,8 +11,12 @@ controller.create = async (req, res) => {
     try {
         //É NECESSÁRIO AGORA TER UM PASSWORD
         //NO BODY
-        if(!req.body.password) res.status(500).send({error: ' Path "password" is required'})
-//Encripta o valor de "password" em "password_hash"
+        if (!req.body.password) res.status(500).send({ error: ' Path "password" is required' })
+        //Encripta o valor de "password" em "password_hash"
+        req.body.password_hash = await bcrypt.hash(req.body.password, 12)
+
+        //Destrói o campo "password" para que ele não seja passado para o model
+        delete req.body.password
 
         await User.create(req.body)
         // HTTP 201: Created
@@ -29,7 +33,13 @@ controller.create = async (req, res) => {
 // glossário já inseridas
 controller.retrieve = async (req, res) => {
     try {
-        const result = await User.find()
+        let result
+        // Apenas o usuário administrador estaria autorizado
+        //a listar todos os usuários
+        if (req.authenticatedId === 'Id do usuário admin')
+            result await User.findById()
+            else result = await User.find({ _id: req.authenticatedId })
+
         // HTTP 200: OK é implícito aqui
         res.send(result)
     }
@@ -45,6 +55,17 @@ controller.retrieve = async (req, res) => {
 controller.retrieveOne = async (req, res) => {
     try {
         const id = req.params.id
+
+        let result
+        // Retornamos os dados do usuário solicitado somente se quem estiver logado
+        //for o admin ou o proprio usuario sendo consultado
+        if (req.authenticatedId === 'Id do usuário admin' || req.authenticatedId === id)
+            result await User.findById(id)
+
+        else
+        result = null
+
+
         const result = await User.findById(id)
         // Se tivermos um resultado, retornamos com status Http 200
         if (result) res.send(result)
@@ -62,6 +83,14 @@ controller.retrieveOne = async (req, res) => {
 
 controller.update = async (req, res) => {
     try {
+        //É NECESSÁRIO AGORA TER UM PASSWORD
+        //NO BODY
+        if (!req.body.password) res.status(500).send({ error: ' Path "password" is required' })
+        //Encripta o valor de "password" em "password_hash"
+        req.body.password_hash = await bcrypt.hash(req.body.password, 12)
+
+        //Destrói o campo "password" para que ele não seja passado para o model
+        delete req.body.password
         const id = req.body.id
         const result = await User.findByIdAndUpdate(id, req.body)
         //HTTP 204: No content
