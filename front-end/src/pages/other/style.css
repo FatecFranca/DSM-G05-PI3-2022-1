@@ -1,0 +1,126 @@
+.foundBody {
+    background: linear-gradient(45deg, #3fb8a9, #3fb8aa71);
+    height: 100vh;
+}
+
+#container {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    right: 10%;
+    bottom: 10%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #3fb8aa88;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    opacity: 0.9;  
+
+}
+
+#container .content {
+    max-width:  600px;
+    text-align: center;
+}
+
+#container .content h2 {
+    font-size: 18vw;
+    color: #fff;
+    line-height: 1em;
+}
+
+#container .content h4 {
+    position: relative;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: #111;
+    background: #fff;
+    font-weight: 300;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+#container .content p {
+    font-size: 1.2em;
+    color: #fff;
+}
+
+
+#container .content a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 25px;
+    background: #e73e49;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 25px;
+    border-radius: 25px;
+    border-bottom: 4px solid #d00d56;
+
+
+}
+
+
+/*      loading  */
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 100%;
+    background: #f5f5f5;
+}
+
+.loading h2 {
+    color: #3fb8aacc;
+    font-size: 6em;
+    display: flex;
+}
+
+.loading h2 span {
+    animation: animate 4s linear infinite;
+}
+
+.loading h2 span:nth-child(1) {
+ animation-delay: 0s;    
+}
+.loading h2 span:nth-child(2) {
+ animation-delay: 0.1s;    
+}
+.loading h2 span:nth-child(3) {
+ animation-delay: 0.2s;    
+}
+.loading h2 span:nth-child(4) {
+ animation-delay: 0.3s;    
+}
+.loading h2 span:nth-child(5) {
+ animation-delay: 0.4s;    
+}
+.loading h2 span:nth-child(6) {
+ animation-delay: 0.5s;    
+}
+.loading h2 span:nth-child(7) {
+ animation-delay: 0.6s;    
+}
+.loading h2 span:nth-child(8) {
+ animation-delay: 0.7s;    
+}
+
+@keyframes animate {
+    0%, 100% {
+        color: #3fb8aa;
+        filter: blur(2px);
+        text-shadow: 0 0 10px #66ddcfd8,
+                     0 0 10px #3fb8aa4b,
+                     0 0 10px #3fb8aa4b,
+                     0 0 10px #3fb8aa4b;                                          
+    }
+    25%, 75% {
+        color: #f5f5f5;
+        filter: blur(0px);
+        text-shadow: none;                                                  
+    }
+}

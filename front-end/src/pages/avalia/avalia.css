@@ -1,0 +1,622 @@
+.containerAvalia{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* padding-top: 350px; */
+    padding-left: 200px;
+    transition: 0.5s;
+}
+
+
+.containerAvalia  h2{
+   color: #000;
+   font-size: 1.5em;
+}
+
+.containerAvalia  p {
+   color: #000;
+   left: 10px;
+   padding: 20px;
+   font-size: 1em;
+   
+}
+
+
+
+.containerlistAvalia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100% - 100px);
+    width: calc(100% - 200px);
+    margin: 15px;
+    
+}
+
+.QdroAvalia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    width: 100%;
+    border-radius: 15px;  
+    
+}
+
+
+
+
+.swiper-button-next:after, .swiper-button-prev:after {
+    color: #3fb8a9;
+}
+
+
+
+/* Card de avaliações */
+
+
+
+.QdroAvalia .card1 {
+    background: #3fb8aa71;
+    display: flex;
+    flex-direction: column;
+    justify-content: left; 
+    
+    }
+
+.QdroAvalia .card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 15px;
+    /* justify-content: space-around; */
+    align-items: center;
+    width: 400px;
+    height: 300px;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: -3px -3px 2px rgba(255, 255, 255, 0.3),
+                 5px 5px 2px rgba(0, 0, 0, 0.2),
+                 5px 5px 2px rgba(0, 0, 0, 0.2);                         
+
+} 
+
+.QdroAvalia .card1 .cardTitulo {
+    border-radius: 15px 15px 0 0;    
+    width: 100%;
+    height: 90px;
+    padding-top: 20px;
+}
+.QdroAvalia .card1 .cardTitulo h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    line-height: 2px;
+    margin-top: 15px;
+    
+}
+.QdroAvalia .card1 .cardTitulo span {
+    font-size: 2em;
+    left: 0;
+    color: #fff;
+    font-weight: bold;
+    line-height: 2px;
+}
+
+/* cartoes de inclusao assessment */
+
+.QdroAvalia .card1 .carddescrip {
+    width: 350px;
+    height: 130px;
+    padding: 10px;
+    margin: 15px;
+}
+
+.QdroAvalia .card1 .carddescrip span {
+    font-size: 1em;
+    left: 10px;
+    color: #000;
+    font-weight: bold;
+    line-height: 2px;
+}
+
+
+
+.QdroAvalia .card1 {
+    position: relative;
+    width: 400px;
+    height: 300px;
+    transform-style: preserve-3d;
+    border-radius: 15px;
+    box-shadow: -3px -3px 2px rgba(255, 255, 255, 0.3),
+                 5px 5px 2px rgba(0, 0, 0, 0.2),
+                 5px 5px 2px rgba(0, 0, 0, 0.2);                         
+
+}
+
+
+.card1 form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+
+}
+.QdroAvalia .card1 .qdbtn {
+    height: 60px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 0 0 15px 15px;    
+}
+
+.card1 .qdbtn button {
+    position: relative;
+    background: #fff;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    width: 150px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    letter-spacing: 0.1em;
+    transition: 0.5s;
+}
+.card1 .qdbtn button:hover {
+    background: #3fb8aaaf;
+    letter-spacing: 0.15em;
+    border: 1px solid #fff;
+    box-shadow: 0 0 25px #fff;
+    cursor: pointer;
+}
+.card1 .qdbtn button:before {
+    content:'';
+    position: absolute;
+    inset: 2px;
+    background: #3fb8aa71;
+}
+
+.QdroAvalia .card1 input {
+    border-radius: 5px;
+    background: #f5f5f5; 
+    border: 1px solid #3fb8a9;
+    height: 40px;       
+    font-size: 1.3em;
+
+}
+
+.QdroAvalia .card1 .carddescrip {
+    height: 120px;
+    width: 93%;
+    border-radius: 5px;
+    background: #f5f5f5; 
+    border: 1px solid #3fb8a9;
+
+}
+
+.QdroAvalia .card1 textarea {
+    margin-bottom: 10px;
+    height: 100px;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #f5f5f5; 
+    border: 1px solid #3fb8a9;
+}
+.card1 form h4 {
+    color: #000;
+    margin-left: 100px;
+    font-size: 12px;
+    padding: 5px;
+}
+
+/* .QdroAvalia .card .qdbtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 50px;
+} */
+
+/* Parte do controle */
+
+.swiper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    border-radius: 15px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+  
+  .swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000;
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.2);
+  }
+  
+  .swiper-pagination-bullet-active {
+    color: #fff;
+  }
+  
+
+.boxQues {
+    position: relative;
+    background: #f5f5f5;
+    box-shadow: 0 30px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;  
+}
+
+.boxQues .contentQues {
+    position: absolute;
+    text-align: justify;
+    bottom: 20px;
+    left: 10%;
+    width: 80%;
+    height: 60px;
+    background: #3fb8a9;
+    transition: 0.5s;
+    overflow: hidden;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.boxQues .contentQues h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    padding-bottom: 5px;
+
+}
+
+.boxQues .contentQues a {
+    opacity: 0;
+    padding: 12px;
+    transition: 0.5s;
+    text-align: justify;
+}
+
+.boxQues .contentQues p {
+    margin: 10px 0 0;
+    padding: 0;
+    opacity: 0;
+    line-height: 1.2em;
+    transition: 0.5s;
+    text-align: center;
+}
+
+
+.boxQues .contentQues .link {
+    width: 100%;
+    justify-content: center;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.boxQues .contentQues .link a {
+    position: relative;
+    background: #fff;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    width: 150px;
+    height: 50px;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    letter-spacing: 0.1em;
+}
+
+.boxQues .contentQues .link a:hover {
+    background: #3fb8aaaf;
+    letter-spacing: 0.15em;
+    border: 1px solid #fff;
+    box-shadow: 0 0 25px #fff;
+    cursor: pointer;
+}
+.boxQues .contentQues .link a:before {
+    content:'';
+    position: absolute;
+    inset: 2px;
+    background: #3fb8aa71;
+}
+
+
+.boxQues:hover .contentQues p {
+    margin: 0;
+    opacity: 1;
+    transition-delay: 0.5s;
+
+}
+
+.boxQues:hover .contentQues a {
+    opacity: 1;
+    transition-delay: 0.5s;
+
+}
+
+.boxQues:hover .contentQues {
+  height: 100%; 
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  border: 1px solid #fff; 
+}
+
+.boxQues:hover .contentQues h2 {
+    font-size: 14px;
+}
+
+.boxQues .imgQues {
+    background:#f5f5f5;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    transition: 0.5s;
+    font-size: 12px; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    object-fit: cover;
+    
+}
+
+
+
+.boxQues .imgQues:hover {
+    opacity: 0;    
+}
+
+
+.abs {
+    width: 1300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    height: calc(100% - 20px);
+    margin: 15px;
+}
+.abs > div {
+    flex: 1 1 200px;
+    height: 200px;
+    margin: 5px;
+    border: 1px solid #3fb8a9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+
+  /* cartão resposta */
+
+  .containerRes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 650px;
+    height: 500px;
+    margin: 15px;
+    padding: 15px;
+}
+
+.containerRes .cardres {
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border: 1px solid #3fb8a9;
+    border-radius:5px;
+    align-items: center;
+    margin: 10px;
+    background: #F5F5F5;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.2)
+    
+}
+
+.containerRes .cardres .contentRes {
+    padding: 30px;
+    height: 180px;
+    top: 0;
+    text-align: center;    
+}
+
+.containerRes .cardres .contentRes h2 {
+    position: absolute;
+    right: 30px;
+    font-size: 3em;
+    font-weight: 600;
+    color: #35BAF6;
+    z-index: 1;
+    opacity: 0.1;
+    transition: 0.5s;
+}
+.containerRes .cardres:hover .contentRes h2 {
+    opacity: 1;
+
+    transform: translateY(-40px);
+
+}
+.containerRes .cardres .contentRes h3 {
+    position: relative;
+    display: flex;
+    margin-bottom: 15px;
+    justify-content:left;
+    padding-bottom: 10px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #000;
+    z-index: 2;
+    opacity: 0.5;
+    letter-spacing: 1px;
+    transition: 0.5s;
+
+}
+
+.containerRes .cardres .contentRes p {
+    position: relative;
+    font-size: 1em;
+    color: #000;
+    z-index: 2;
+    opacity: 0.5;
+    font-weight: 300;
+    transition: 0.5s;
+
+}
+
+.cardres .qdbtn h4 {
+    position: relative;
+    left: 20px;
+    text-align: left;
+    margin: 10px;
+    font-size: 14px;
+}
+.cardres .qdbtn .idQuest {
+    display: none;
+}
+
+#textres {
+    width: 500px;
+    height: 90px;
+    color: #000;
+    font-size: 1em;
+    padding: 5px;
+
+}
+.containerRes .cardres .qdbtn{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.cardres .qdbtn  .brn {
+    position: relative;
+    left: 20px;
+    height: 50px;
+    margin-left: 10px;
+    width: 70%;
+    display: flex;
+    justify-content: space-around;
+    border: 1px solid #3fb8a9;
+    /* background: #3fb8aaaf; */
+}
+
+.cardres .qdbtn  .brn .classYes.active,
+.cardres .qdbtn  .brn .classNo.active,
+.cardres .qdbtn  .brn .classNA.active {
+    background: #677eff;    
+}
+
+
+
+.cardres .qdbtn .brn button {
+    position: relative;
+    width: 120px;
+    margin: 2px;
+    background: #fff;
+    text-transform: uppercase;
+    font-size: 0.7em;
+    border-radius: 5px;
+    border: none;
+    /* letter-spacing: 0.1em; */
+    transition: 0.5s;
+  
+}
+
+.cardres .qdbtn form {
+    height: 100%;
+    margin: 15px;
+}
+
+.cardres .qdbtn .brn button:hover {
+    background: #3fb8aaaf;
+    /* letter-spacing: 0.15em; */
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+.cardres .qdbtn .brn button:before {
+    content:'';
+    position: absolute;
+    inset: 2px;
+    background: #3fb8aa71;
+}
+
+
+.containerRes .cardres:hover .contentRes h3,
+.containerRes .cardres:hover .contentRes p {
+    opacity: 1;
+}
+
+.cardres .qdbtn .btn {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.cardres .qdbtn .btn button:hover { 
+    background: #3fb8aaaf;
+    /* letter-spacing: 0.15em; */
+    border: 1px solid #fff;
+    cursor: pointer;
+
+}
+
+.cardres .qdbtn .btn button:before {
+    content:'';
+    position: absolute;
+    inset: 2px;
+    background: #3fb8aa71;
+}
+.cardres .qdbtn .btn button {
+    position: relative;
+    width: 150px;
+    margin: 5px;
+    background: #fff;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    border-radius: 5px;
+    border: none;
+    /* letter-spacing: 0.1em; */
+    transition: 0.5s;
+
+}
+
+
