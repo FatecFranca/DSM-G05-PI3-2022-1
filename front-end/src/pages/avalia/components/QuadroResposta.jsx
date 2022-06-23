@@ -15,12 +15,13 @@ import "swiper/css/pagination";
 export default function Quadro(props) {
     const auth = useContext(AuthContext);      
     const [group, setGroup] = useState([]);
+    const [question, setQuestions] = useState([]);
     const [answer, setAnswer] = useState([]);
 
     
     const [resp, setResp] = useState();
     const [idAssess, setIdAssess] = useState();
-    const [value, setValue] = useState();
+    const [obj_answer, setValue] = useState();
     const [name, setName] = useState();
 
     const navigate = useNavigate();
@@ -36,6 +37,7 @@ export default function Quadro(props) {
 
       useEffect(() =>{
         answerAll();
+        newList();
       }, [idAssess])
 
       function returnPage () {
@@ -56,9 +58,10 @@ export default function Quadro(props) {
           const idAssess = auth.setAssessmentID();
           const loganswer = await ApiAnswer.listAnswer(idAssess);
 
-          setAnswer(loganswer);
-          console.log(group)
-          console.log(answer)
+          //   console.log(group)
+          //   console.log(answer)
+          //   console.log(question)
+          return setAnswer(loganswer);
         }
         
 
@@ -69,47 +72,79 @@ export default function Quadro(props) {
         const nameGroup = await Api.listGroupById(idgroup);    
         const idAssess = auth.setAssessmentID();
         
-        
         setIdAssess(idAssess)
-        setGroup(data);
-        setName(nameGroup.group);
+        setName(nameGroup.group)
+        return setGroup(data)
     }
 
 
-         async function handleSubmit (e) {
-            let  objective_answer = '';
-            let comments ='';
+    function newList () {
+        let newList = [];
+        let vbool = false;
+
+
+        group.forEach((resp, index)=> {
+            vbool = true
+            const idQuestion = resp._id
+               answer.map(list => {
+                    if(list.question._id === idQuestion) {
+                        newList.push({
+                            _id: list.question._id,
+                            number: list.question.number,
+                            group: list.question.group,
+                            enunciation: list.question.enunciation,
+                            comments: list.comments, 
+                            objective_answer: list.objective_answer 
+                        })
+                        vbool = false
+                    }                
+                })            
+            if(vbool) {
+                newList.push({...resp})
+            }    
+        })
+
+        return setQuestions(newList);
+
+    }
+
+
+
+
+    async function handleSubmit (e) {
         e.preventDefault();
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData);
 
 
          data.assessment =  idAssess;  
-         data.objective_answer =  value;  
+         data.objective_answer =  obj_answer;  
         
-        if(!value) {
-            alert("Selecione uma opção")
+        if(!obj_answer) {
+            // alert("Selecione uma opção")
+            console.log(obj_answer)
             return false
         }
         
-                
-        // incluindo dados
+        // // incluindo dados
         const answer = await ApiAnswer.CreateAnswer(data.assessment, data.comments, data.objective_answer, data.question);  
         console.log(answer)
-
+        
         if(answer === 500){
-            alert("Ops, aconteceu algo errado na inclusão")
-            return false
-        }
-        setValue('');
-        // console.log(data)
+                alert("Ops, aconteceu algo errado na inclusão")
+                return false
+            }
+            setValue('');
+            groupAll();
+            newList();
+            questions();            
     }
 
 
 
 
      const questions = () => {
-        if(group.length <= 0) {
+        if(question.length <= 0) {
             return <Loading />;
          }
 
@@ -121,7 +156,7 @@ export default function Quadro(props) {
                     modules={[Pagination, Navigation]}
                     className="mySwiper"
                     >
-                    {group.length > 0 && group.map((item, key) =>(
+                    {question.length > 0 && question.map((item, key) =>(
                         <SwiperSlide>
                             <div className="cardres">
                         <div className="contentRes">
@@ -130,26 +165,26 @@ export default function Quadro(props) {
                             <p>{item.enunciation}</p>
                         </div>
                         <div className="qdbtn">
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} key={key}>
                             <div className="brn">
                                 <button 
                                     type="button" 
                                     name="objective_answer" 
-                                    className="classYes" 
+                                    className={item.objective_answer === "Y" ? 'activate' : 'no'}
                                     value="Y" 
-                                    onClick={()=> activeYes()}>sim</button>
+                                    onClick={e => setValue(e.target.value)}>sim</button>
                                 <button 
                                     type="button" 
                                     name="objective_answer" 
-                                    className="classNo" 
+                                    className={item.objective_answer === "N" ? 'activate' : 'no'}
                                     value="N" 
-                                    onClick={()=> activeNo()}>Não</button>
+                                    onClick={e => setValue(e.target.value)}>Não</button>
                                 <button 
                                     type="button" 
                                     name="objective_answer" 
-                                    className="classNA" 
+                                    className={item.objective_answer === "X" ? 'activate' : 'no'} 
                                     value="X" 
-                                    onClick={()=> activeNa()}>Não aplicavel</button>
+                                    onClick={e=> setValue(e.target.value)}>Não aplicavel</button>
                             </div> 
                                 <h4>Comentário:</h4>
                                     <input className="idQuest"
@@ -161,7 +196,9 @@ export default function Quadro(props) {
                                 <textarea 
                                 type="textarea" 
                                 id="textres"
-                                name="comments"  
+                                name="comments"
+                                value={item.comments}
+                                onChange={e => setResp(obj_answer)}  
                                 />
                                 <div className="btn">
                                     <button onClick={() => returnPage()}>Voltar</button>

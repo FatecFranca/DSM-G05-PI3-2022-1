@@ -537,9 +537,7 @@
     /* background: #3fb8aaaf; */
 }
 
-.cardres .qdbtn  .brn .classYes.active,
-.cardres .qdbtn  .brn .classNo.active,
-.cardres .qdbtn  .brn .classNA.active {
+.cardres .qdbtn  .brn .activate {
     background: #677eff;    
 }
 
